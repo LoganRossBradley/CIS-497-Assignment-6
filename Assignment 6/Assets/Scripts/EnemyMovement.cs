@@ -28,16 +28,11 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Movement()
     {
-
         yield return new WaitForSeconds(turnTimer);
 
         while (!gm.gameOver)
         {
             transform.Rotate(0, 180, 0);
-
-            //enemy.AddForce(Vector3.forward * speed * Time.deltaTime, ForceMode.Impulse);
-
-
             yield return new WaitForSeconds(turnTimer);
         }
 

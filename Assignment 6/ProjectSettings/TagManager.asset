@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - GameManager
   - Enemy
+  - TutorialTrigger
+  - Goal
   layers:
   - Default
   - TransparentFX

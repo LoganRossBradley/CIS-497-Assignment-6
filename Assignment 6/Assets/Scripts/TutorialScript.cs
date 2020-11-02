@@ -2,36 +2,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialScript : MonoBehaviour
 {
-    private bool step1;
-    private bool step2;
-    private bool step3;
+    public int  currentStep;
 
-    public GameObject wall1;
-    public GameObject wall2;
+    public GameObject goal;
+    public GameObject player;
+    public Text tutorialText;
+
+    private bool step3Triggered;
 
     // Start is called before the first frame update
     void Start()
     {
-        step1 = true;
-        step2 = false;
-        step3 = false;
+        currentStep = 1;
+        step3Triggered = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(step1)
+        if(currentStep == 1)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
-                step1 = false;
-                step2 = true;
-                Destroy(wall1);
+                NextStep();
+                tutorialText.text = "Get past the enemy without getting caught!";
             }
         }
-        //else if(step2 )
+        else if(currentStep == 2 && player.transform.position.x > 1.5)
+        {
+            NextStep();
+        }
+        else if(currentStep ==3)
+        {
+            if (!step3Triggered)
+            {
+                step3Triggered = true;
+                tutorialText.text = "You can pause the game at any time by pressing 'P'. Try it!";
+            }
+            if(Input.GetKeyDown(KeyCode.P))
+            {
+                NextStep();
+                tutorialText.text = "Touch the green cube to advance to the next level";
+                goal.SetActive(true);
+            }
+        }
+    }
+
+    public void NextStep()
+    {
+        currentStep++;
     }
 }

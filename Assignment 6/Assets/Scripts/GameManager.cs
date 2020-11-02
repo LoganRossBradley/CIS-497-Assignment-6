@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace Assets.Scripts
 {
@@ -10,7 +11,11 @@ namespace Assets.Scripts
     {
         public int score;
         public bool gameOver = false;
+        public bool won = false;
         public GameObject pauseMenu;
+        public GameObject wonMenu;
+        public GameObject lossMenu;
+        public GameObject mainMenu;
 
         //var to keep track of current level
         private string CurrentLevelName = string.Empty;
@@ -37,7 +42,8 @@ namespace Assets.Scripts
         //methods to load and unload scenes
         public void LoadLevel(string levelName)
         {
-            gameOver = false;
+            ResetGameState();
+
             AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
             if (ao == null)
             {
@@ -49,6 +55,7 @@ namespace Assets.Scripts
 
         public void UnloadLevel(string levelName)
         {
+            ResetGameState();
             AsyncOperation ao = SceneManager.UnloadSceneAsync(levelName);
             if (ao == null)
             {
@@ -75,10 +82,16 @@ namespace Assets.Scripts
             {
                 Pause();
             }
+            else if(gameOver)
+            {
+                if (won) { wonMenu.SetActive(true); }
+                else if (!won) { lossMenu.SetActive(true); }
+            }
         }
 
         public void UnloadCurrentLevel()
         {
+            ResetGameState();
             AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
             if (ao == null)
             {
@@ -87,6 +100,35 @@ namespace Assets.Scripts
             }
         }
 
+        public void LoadNextLevel()
+        {
+            UnloadCurrentLevel();
+            if (CurrentLevelName == "Level 1")
+            {
+                LoadLevel("Level 2");
+            }
+            else if (CurrentLevelName == "Level 2")
+            {
+                LoadLevel("Level 3");
+            }
+            else if (CurrentLevelName == "Level 3")
+            {
+                mainMenu.SetActive(true);
+            }
+
+        }
+
+        public void ReloadLevel()
+        {
+            UnloadCurrentLevel();
+            LoadLevel(CurrentLevelName);
+        }
+
+        public void ResetGameState()
+        {
+            gameOver = false;
+            won = false;
+        }
     }
 
 
