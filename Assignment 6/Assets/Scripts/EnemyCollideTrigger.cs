@@ -1,9 +1,15 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 6
+ * handles when the player runs into an enemy
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine;
 
-public class EnemyCollideTrigger : MonoBehaviour
+public class EnemyCollideTrigger : MonoBehaviour, Trigger
 {
     public GameManager gm;
     private bool triggered;
@@ -21,7 +27,7 @@ public class EnemyCollideTrigger : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !triggered)
         {

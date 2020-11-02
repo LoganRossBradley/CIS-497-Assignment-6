@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*
+ * Logan Ross
+ * Assignment 6
+ * manages game status as well as loading/unloading/reloading scenes
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;

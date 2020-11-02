@@ -1,13 +1,17 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 6
+ * lets the player move
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine;
 
-public class PlayerControler : MonoBehaviour
+public class PlayerControler : Character
 {
     // Start is called before the first frame update
-
-    public float speed = 20;
 
     private float horizontalInput;
     private float forwardInput;
@@ -15,6 +19,7 @@ public class PlayerControler : MonoBehaviour
     private GameManager gm;
     void Start()
     {
+        speed = 5;
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
@@ -29,6 +34,6 @@ public class PlayerControler : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
             transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
         }
-       
+
     }
 }

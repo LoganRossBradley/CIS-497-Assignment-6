@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 6
+ * another parent class example
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

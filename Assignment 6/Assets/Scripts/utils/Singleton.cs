@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿
+/*
+ * Logan Ross
+ * Assignment 6
+ * singleton example
+ */
+
+using UnityEngine;
 using System.Collections;
 
 namespace Assets.Scripts

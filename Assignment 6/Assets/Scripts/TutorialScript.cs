@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Logan Ross
+ * Assignment 6
+ * manages the scripted sequences in the tutorial level (level 1)
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

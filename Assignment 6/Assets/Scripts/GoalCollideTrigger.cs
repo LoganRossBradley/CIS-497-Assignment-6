@@ -1,9 +1,15 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 6
+ * Handles when the player runs into the goal
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine;
 
-public class GoalCollideTrigger : MonoBehaviour
+public class GoalCollideTrigger : MonoBehaviour, Trigger
 {
     public GameManager gm;
     private bool triggered;
@@ -21,7 +27,7 @@ public class GoalCollideTrigger : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !triggered && this.isActiveAndEnabled)
         {
